@@ -7,9 +7,12 @@
     help(obj.func)      # 查询obj.func的具体介绍和用法
     
 #-- 测试类型的三种方法，推荐第三种
-    if type(L) == type([]): print("L is list")
-    if type(L) == list: print("L is list")
-    if isinstance(L, list): print("L is list")
+    if type(L) == type([]):
+        print("L is list")
+    if type(L) == list:
+        print("L is list")
+    if isinstance(L, list):
+        print("L is list")
         
 #-- Python数据类型：哈希类型、不可哈希类型
     # 哈希类型，即在原地不能改变的变量类型，不可变类型。可利用hash函数查看其hash值，也可以作为字典的key
@@ -72,7 +75,7 @@
 #-- 集合set
     """
     set是一个无序不重复元素集, 基本功能包括关系测试和消除重复元素。
-    set支持union(联合), intersection(交), difference(差)和sysmmetric difference(对称差集)等数学运算。
+    set支持union(联合), intersection(交), difference(差)和symmetric difference(对称差集)等数学运算。
     set支持x in set, len(set), for x in set。
     set不记录元素位置或者插入点, 因此不支持indexing, slicing, 或其它类序列的操作
     """
@@ -83,7 +86,7 @@
     c = t – s;    t.difference(s)                # 求差集（项在t中, 但不在s中）
     d = t ^ s;    t.symmetric_difference(s)      # 对称差集（项在t或s中, 但不会同时出现在二者中）
     t.add('x');   t.remove('H')                  # 增加/删除一个item
-    t.update([10,37,42])                         # 利用[......]更新s集合
+    s.update([10,37,42])                         # 利用[......]更新s集合
     x in s,  x not in s                          # 集合中是否存在某个值
     s.issubset(t); s.issuperset(t); s.copy(); s.discard(x); s.clear()
     {x**2 for x in [1, 2, 3, 4]}                 # 集合解析，结果：{16, 1, 4, 9}
@@ -102,7 +105,7 @@
 
 #-- 布尔类型bool
     type(True)                   # 返回<class 'bool'>
-    isinstance(False, int)       # bool类型属于整形，所以返回True
+    isinstance(False, int)       # bool类型属于整型，所以返回True
     True == 1; True is 1         # 输出(True, False)
     
 #-- 动态类型简介
@@ -137,8 +140,8 @@
 #-- 内置str处理函数：
     str1 = "stringobject"
     str1.upper(); str1.lower(); str1.swapcase(); str1.capitalize(); str1.title()        # 全部大写，全部小写、大小写转换，首字母大写，每个单词的首字母都大写
-    str1.ljust(width)                       # 获取固定长度，右对齐，左边不够用空格补齐
-    str1.rjust(width)                       # 获取固定长度，左对齐，右边不够用空格补齐
+    str1.ljust(width)                       # 获取固定长度，左对齐，右边不够用空格补齐
+    str1.rjust(width)                       # 获取固定长度，右对齐，左边不够用空格补齐
     str1.center(width)                      # 获取固定长度，中间对齐，两边不够用空格补齐
     str1.zfill(width)                       # 获取固定长度，右对齐，左边不足用0补齐
     str1.find('t',start,end)                # 查找字符串，可以指定起始及结束位置搜索
@@ -146,10 +149,15 @@
     str1.count('t')                         # 查找字符串出现的次数
     #上面所有方法都可用index代替，不同的是使用index查找不到会抛异常，而find返回-1
     str1.replace('old','new')               # 替换函数，替换old为new，参数中可以指定maxReplaceTimes，即替换指定次数的old为new
-    str1.strip(); str1.lstrip(); str1.rstrip(); str1.strip('d'); str1.lstrip('d'); str1.rstrip('d')
+    str1.strip();
+    str1.strip('d');                        # 删除str1字符串中开头、结尾处，位于 d 删除序列的字符
+    str1.lstrip();
+    str1.lstrip('d');                       # 删除str1字符串中开头处，位于 d 删除序列的字符
+    str1.rstrip();
+    str1.rstrip('d')                        # 删除str1字符串中结尾处，位于 d 删除序列的字符
     str1.startswith('start')                # 是否以start开头
     str1.endswith('end')                    # 是否以end结尾
-    str1.isalnum(); str1.isalpha(); str1.isdigit(); str1.islower(); str1.isupper()      # 判断字符串是否全为字符、数字、大写、小写
+    str1.isalnum(); str1.isalpha(); str1.isdigit(); str1.islower(); str1.isupper()      # 判断字符串是否全为字符、数字、小写、大写
 
 #-- 三重引号编写多行字符串块，并且在代码折行处嵌入换行字符\n
     mantra = """hello world
@@ -165,8 +173,8 @@
     int('42'), str(42)                      # 返回(42, '42')
     float('4.13'), str(4.13)                # 返回(4.13, '4.13')
     ord('s'), chr(115)                      # 返回(115, 's')
-    int('1001', 2)                          # 将字符串作为二进制数字，转化为数字，返回13
-    bin(13), oct(13), hex(13)               # 将整数转化为二进制/八进制/十六进制字符串，返回('1001', '0o15', '0xd')
+    int('1001', 2)                          # 将字符串作为二进制数字，转化为数字，返回9
+    bin(13), oct(13), hex(13)               # 将整数转化为二进制/八进制/十六进制字符串，返回('0b1101', '015', '0xd')
     
 #-- 另类字符串连接
     name = "wang" "hong"                    # 单行，name = "wanghong"
@@ -191,7 +199,7 @@
     # 普通调用
     "{0}, {1} and {2}".format('spam', 'ham', 'eggs')            # 基于位置的调用
     "{motto} and {pork}".format(motto = 'spam', pork = 'ham')   # 基于Key的调用
-    "{motto} and {0}".format(ham, motto = 'spam')               # 混合调用
+    "{motto} and {0}".format('ham', motto = 'spam')             # 混合调用
     # 添加键 属性 偏移量 (import sys)
     "my {1[spam]} runs {0.platform}".format(sys, {'spam':'laptop'})                 # 基于位置的键和属性
     "{config[spam]} {sys.platform}".format(sys = sys, config = {'spam':'laptop'})   # 基于Key的键和属性
@@ -246,7 +254,7 @@
 #-- 常用字典常量和操作
     D = {}
     D = {'spam':2, 'tol':{'ham':1}}                   # 嵌套字典
-    D = dict.fromkeys(['s', 'd'], 8)                  # {'d': 8, 's': 8}
+    D = dict.fromkeys(['s', 'd'], 8)                  # {'s': 8, 'd': 8}
     D = dict(name = 'tom', age = 12)                  # {'age': 12, 'name': 'tom'}
     D = dict([('name', 'tom'), ('age', 12)])          # {'age': 12, 'name': 'tom'}
     D = dict(zip(['name', 'age'], ['tom', 12]))       # {'age': 12, 'name': 'tom'}
@@ -262,8 +270,8 @@
     # 字典注意事项：（1）对新索引赋值会添加一项（2）字典键不一定非得是字符串，也可以为任何的不可变对象
 
 #-- 字典解析
-    D = {k:8 for k in ['s', 'd']}                     # {'d': 8, 's': 8}
-    D = {k:v for (k, v) in zip(['name', 'age'], ['tom', 12])}
+    D = {k:8 for k in ['s', 'd']}                     # {'s': 8, 'd': 8}
+    D = {k:v for (k, v) in zip(['name', 'age'], ['tom', 12])}       # {'age': 12, 'name': tom}
     
 #-- 字典的特殊方法__missing__：当查找找不到key时，会执行该方法
     class Dict(dict):
@@ -327,8 +335,8 @@
 
 #-- 序列赋值 序列解包
     [a, b, c] = (1, 2, 3)                  # a = 1, b = 2, c = 3
-    a, b, c, d = "spam"                    # a = 's', b = 'p'
-    a, b, c = range(3)                     # a = 0, b = 1
+    a, b, c, d = "spam"                    # a = 's', b = 'p', c = 'a', d = 'm'
+    a, b, c = range(3)                     # a = 0, b = 1, c = 2
     a, *b = [1, 2, 3, 4]                   # a = 1, b = [2, 3, 4]
     *a, b = [1, 2, 3, 4]                   # a = [1, 2, 3], b = 4
     a, *b, c = [1, 2, 3, 4]                # a = 1, b = [2, 3], c = 4
@@ -516,7 +524,7 @@
     f(1, 2, 3)                         # 输出(1, 2, 3)
     def f(**args): print(args)         # 在字典中收集不匹配的关键字参数
     f(a = 1, b = 2)                    # 输出{'a':1, 'b':2}
-    def f(a, *b **c): print(a, b, c)   # 两者混合使用
+    def f(a, *b, **c): print(a, b, c)  # 两者混合使用
     f(1, 2, 3, x=4, y=5)               # 输出1, (2, 3), {'x':4, 'y':5}
     
 #-- 函数调用时的参数解包: * 和 ** 分别解包元组和字典
@@ -1273,12 +1281,7 @@
         
 
 """其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他----其他"""
-    
-#-- 60个字符解决FizzBuzz:
-    """写一个程序, 打印数字1到100, 3的倍数打印“Fizz”来替换这个数, 5的倍数打印“Buzz”, 既是3又是5的倍数的打印“FizzBuzz”"""
-    for x in range(101):
-        print("fizz"[x%3*4::]+"buzz"[x%5*4::] or x)        # 解释:最主要用到列表(字符串)的子表
-        
+
 #-- Python实现任意深度的赋值 例如a[0] = 'value1'; a[1][2] = 'value2'; a[3][4][5] = 'value3'
     class MyDict(dict):
         def __setitem__(self, key, value):                 # 该函数不做任何改动 这里只是为了输出
